@@ -1,0 +1,12 @@
+asgiref==3.4.1
+autopep8 @ file:///tmp/build/80754af9/autopep8_1620866417880/work
+certifi==2021.10.8
+dj-database-url==0.5.0
+Django==3.2.8
+Pillow==8.4.0
+psycopg2-binary==2.9.1
+pycodestyle @ file:///tmp/build/80754af9/pycodestyle_1615748559966/work
+pytz==2021.3
+sqlparse==0.4.2
+toml @ file:///tmp/build/80754af9/toml_1616166611790/work
+whitenoise==5.3.0

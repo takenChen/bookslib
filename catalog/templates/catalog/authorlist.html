@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Author List</h1>
+{% if authorlist %}
+    {% if user.is_staff %}
+        {% if perms.catalog.can_mark_returned %}
+            <a href="{% url 'author-create' %}">Create</a>
+        {% endif %}
+    {% endif %}
+    <hr />
+<ul>
+    {% for author in authorlist %}
+    <li>
+        <a href="{{ author.get_absolute_url }}">{{ author.first_name }}-{{ author.last_name}}</a> 
+        ({{author.date_of_birth}}~{{author.date_of_death}})
+         -<a href="{{author.get_delete_url}}">Delete</a>-<a href="{{author.get_update_url}}">Update</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>There are no author in the book.</p>
+{% endif %}
+{% block pagination %}
+
+{% if is_paginated %}
+<div class="pagination">
+    <span class="page-links">
+        {% if page_obj.has_previous %}
+        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"> 上一頁</a>
+        {% endif %}
+        <span class="page-current">
+            頁 {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+        {% if page_obj.has_next %}
+        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">下一頁</a>
+        {% endif %}
+    </span>
+    
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+{% endblock %}
